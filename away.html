@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrfect Pals - Privacy </title>
+    <link rel="stylesheet" href="away.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Bangers&family=Caveat:wght@400..700&family=Faculty+Glyphic&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Bangers&family=Caveat:wght@400..700&family=Faculty+Glyphic&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="head">
+        <h1>Purrfect Pals<a href="main.html"><img src="icon.png" id="icon" alt="logo"/>
+    </a></h1></div>
+</header>
+
+<div id="sidemenu">
+    <ul>
+        <li><a href="main.html" class="menu-item">Home page</a></li>
+        <li><a href="browse.html" class="menu-item">Browse Available Pets</a></li>
+        <li><a href="find.html" class="menu-item">Find a dog/cat</a></li>
+        <li><a href="dogcare.html" class="menu-item">Dog Care</a></li>
+        <li><a href="catcare.html" class="menu-item">Cat Care</a></li>
+        <li><a href="away.html" class="menu-item">Have a pet to give away</a></li>
+        <li><a href="contactus.html" class="menu-item">Contact Us</a></li>
+    </ul>
+</div>
+
+<form>
+    <h2>Have a Pet to Give Away</h2>
+
+    <label>Cat or Dog?</label>
+    <input type="radio" name="petType" value="cat"> Cat
+    <input type="radio" name="petType" value="dog"> Dog<br>
+
+    <label>Breed of Dog or Cat</label>
+    <select name="breed">
+        <option value="" disabled selected>Select a breed</option>
+        <option value="Mixed Breed">Mixed Breed</option>
+        <option value="Bulldog">Bulldog</option>
+        <option value="Beagle">Beagle</option>
+        <option value="Poodle">Poodle</option>
+        <option value="Siamese">Siamese</option>
+        <option value="Sphynx">Sphynx</option>
+        <option value="Persian">Persian</option>
+    </select>
+
+    <label>Age of Animal</label>
+    <select name="age">
+        <option value="" disabled selected>Select age range</option>
+        <option value="0-1">0-1 years</option>
+        <option value="2-4">2-4 years</option>
+        <option value="5+">5+ years</option>
+    </select>
+
+    <label>Animal Gender</label>
+    <input type="radio" name="gender" value="male"> Male
+    <input type="radio" name="gender" value="female"> Female
+
+    <br><br>
+    <label>Compatibility</label>
+    <div class="checkbox-group">
+        <input type="checkbox" name="compatibility" value="dogs"> <span>Gets along with other dogs</span>
+    </div>
+    <div class="checkbox-group">
+        <input type="checkbox" name="compatibility" value="cats"> <span>Gets along with other cats</span>
+    </div>
+    <div class="checkbox-group">
+        <input type="checkbox" name="compatibility" value="children"> <span>Suitable for families with small children</span>
+    </div>
+
+    <label>Tell us about your pet</label>
+    <textarea name="description" placeholder="Brag about your pet!"></textarea>
+
+    <label>Owner's Name</label>
+    <input type="text" name="ownerName" placeholder="First and Last Name" required>
+
+    <label>Owner's Email</label>
+    <input type="email" name="ownerEmail" placeholder="Your email" required>
+
+    <div class="button-group">
+        <button type="submit">Submit</button>
+        <button type="reset">Clear</button>
+    </div>
+</form>
+
+
+<footer>
+    <p>&copy; 2025 Purrfect Pals. All Rights Reserved.</p>
+    <p><a href="privacy.html">Privacy Policy</a> | <a href="disclaimer.html">Disclaimer</a></p>
+</footer>
+    
+</body>
+</html>

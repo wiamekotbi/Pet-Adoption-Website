@@ -1,0 +1,168 @@
+/* Keep header fixed at the top */
+header {
+  background-color: pink;
+  font-family: Atma, sans-serif;
+  height: 70px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000; /* Ensures it stays above other content */
+}
+
+
+
+/* Push body content down to avoid overlapping with fixed header */
+body {
+  margin: 0;
+  padding-top: 80px; /* Adjust to match header height */
+  background-color: rgb(249, 238, 240);
+  min-height: 100vh; /* Makes sure footer is pushed down */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar menu */
+#sidemenu {
+  position: fixed;
+  background-color: rgb(248, 224, 228);
+  height: 100%;
+  width: 200px;
+  top: 70px; /* Prevents overlapping with fixed header */
+}
+
+/* Footer sticks to the bottom */
+footer {
+  background-color: rgb(199, 249, 244);
+  width: 100%;
+  text-align: center;
+  padding: 5px 0px;
+  margin-top: auto; /* Pushes it to the bottom */
+  position: relative;
+}
+
+/* Icon */
+#icon {
+  height: 50px;
+  width: 60px;
+  position: relative;
+  top: 12px;
+}
+
+/* Menu styling */
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 10px;
+  font-family: Nunito Sans, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  display: block;
+  padding: 20px;
+  color: black;
+}
+
+.menu-item:hover {
+  background-color: pink;
+  transform: translateY(-5px);
+}
+
+/* Form styles */
+form {
+  background-color: rgb(248, 224, 228);
+  padding: 20px;
+  border-radius: 10px;
+  width: 550px;
+  text-align: center;
+  font-family: Nunito Sans, sans-serif;
+  margin: 30px auto; /* Center horizontally */
+margin-left: 520px;
+}
+
+select {
+  background-color: pink;
+  border-radius: 5px;
+  font-family: Nunito Sans, sans-serif;
+  padding-left: 5px;
+}
+
+/* Other form elements */
+h2 {
+  text-align: center;
+}
+
+label {
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea {
+  height: 80px;
+}
+
+/* Button styles */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+button {
+  background-color: pink;
+  color:black;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 48%;
+}
+
+button:hover {
+  background-color:  rgb(238, 113, 134);
+
+}
+
+button[type="reset"] {
+  background-color: pink;
+}
+
+button[type="reset"]:hover {
+  background-color:  rgb(238, 113, 134);
+
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center; /* Ensures checkbox and text are aligned */
+  gap: 8px; /* Adds space between checkbox and text */
+  margin: 5px 0; /* Adds spacing between each checkbox group */
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0; /* Ensures alignment */
+  vertical-align: middle;
+}
+
+
+
+
