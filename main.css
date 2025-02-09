@@ -50,6 +50,14 @@ ul {
     background-color: pink;
     transform: translateY(-5px); /* Slight lift effect on hover */
   }
+
+#background{
+  opacity: 0.2;   
+  height:700px;
+  position:absolute;
+  bottom:15px;
+  left:440px
+}
   
 
 footer{
@@ -73,3 +81,32 @@ body{
     width:200px;
     
 }
+
+#description{
+  font-family: Nunito Sans, sans-serif;
+ padding:20px;
+ margin-left: 250px;
+ line-height: 2;
+ background-color: rgba(255, 255, 255, 0.8);
+ border-radius: 5px;
+ width:1000px;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ font-weight: 600;
+ text-align: justify
+ 
+ 
+}
+
+#description::before {
+  content: '🐾'; /* Add a cute paw icon before the text */
+  font-size: 30px;
+  display: inline-block;
+  margin-right: 10px;
+
+}
+
+#description:hover {
+  transform: translateY(-5px); /* Hover effect to lift the text */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
