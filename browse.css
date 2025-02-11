@@ -16,11 +16,11 @@ header {
     top:12px 
 }
 
-p{
+#mainarea p{
   font-family: Nunito Sans, sans-serif;
-  position: relative;
-  top:200px;
-  left:250px
+  margin-right: 390px;  /* Adjust based on sidebar width */
+    display: flex;
+    justify-content: center; /* Center content */
 }
 a {
     text-decoration: none;
@@ -31,8 +31,7 @@ ul {
     padding-left: 10px;
     font-family: Nunito Sans, sans-serif;
     padding: 0;
-  margin: 0; /* Remove any default margin */
-
+  margin: 0; 
   } 
 
 .menu-item{
@@ -65,8 +64,7 @@ body{
     position:fixed;
     background-color: rgb(248, 224, 228);
     height:100%;
-    width:200px;
-    
+    width:200px;  
 }
 
 #mainarea{
