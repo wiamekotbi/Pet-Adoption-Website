@@ -61,3 +61,21 @@ body{
     background-color: pink;
     transform: translateY(-5px); /* Slight lift effect on hover */
   }
+
+
+ #disclaimer{
+  position:relative;
+  left:250px;
+  top:30px;
+  font-family: Nunito Sans, sans-serif;
+ }
+
+ .container p{
+  font-family: Nunito Sans, sans-serif;
+  position: relative;
+  left:250px;
+}
+
+  .container{
+    margin-right:270px;
+  }
