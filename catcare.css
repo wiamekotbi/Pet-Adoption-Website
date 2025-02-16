@@ -39,6 +39,20 @@ ul {
     font-family: Nunito Sans, sans-serif;
   }
 
+  #guide {
+    display: block; 
+    margin-left: 250px; }
+  
+  #guide h2 {
+    margin-bottom: 10px; }
+  
+  
+  #guide p {
+    display: inline; 
+    margin-left:565px;
+  }
+  
+
 .menu-item{
     display: block;
     padding: 20px;
