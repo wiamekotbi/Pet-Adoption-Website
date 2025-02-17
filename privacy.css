@@ -1,81 +1,159 @@
+/* Default styles for larger screens (desktop) */
 header {
-    background-color: pink;
-    font-family: Atma, sans-serif;
-    height: 70px;
-    display: flex;
+  background-color: pink;
+  font-family: Atma, sans-serif;
+  height: 70px;
+  display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 5px;
-  
 }
 
-  #icon {
-    height: 50px; /* Adjust the icon size */
-    width: 60px; /* Adjust the icon size */
-    position:relative;
-    top:12px 
+#icon {
+  height: 50px;
+  width: 60px;
+  position: relative;
+  top: 12px;
 }
 
 a {
-    text-decoration: none;
-  }
-
-ul {
-    list-style-type: none;
-    padding-left: 10px;
-    font-family: Nunito Sans, sans-serif;
-    padding: 0;
-  margin: 0; /* Remove any default margin */
-
-  } 
-
-.menu-item{
-    display: block;
-    padding: 20px;
-    color: black;
-} 
-
-footer{
-    background-color: rgb(199, 249, 244);
-    width:100%;
-    text-align: center;
-    padding:5px 0px;
-    position:absolute;
-    bottom:0;
-}  
-
-body{
-    margin: 0px 0px 0px 0px;
-    background-color: rgb(249, 238, 240);
+  text-decoration: none;
 }
 
-#sidemenu{
-    position:fixed;
-    background-color: rgb(248, 224, 228);
-    height:100%;
-    width:200px;
-    
+ul {
+  list-style-type: none;
+  padding-left: 10px;
+  font-family: Nunito Sans, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  display: block;
+  padding: 20px;
+  color: black;
+}
+
+footer {
+  background-color: rgb(199, 249, 244);
+  width: 100%;
+  text-align: center;
+  padding: 5px 0px;
+  position: absolute;
+  bottom: 0;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(249, 238, 240);
+}
+
+#sidemenu {
+  position: fixed;
+  background-color: rgb(248, 224, 228);
+  height: 100%;
+  width: 200px;
 }
 
 .menu-item:hover {
-    background-color: pink;
-    transform: translateY(-5px); /* Slight lift effect on hover */
-  }
-
-
- #disclaimer{
-  position:relative;
-  left:250px;
-  top:30px;
-  font-family: Nunito Sans, sans-serif;
- }
-
- .container p{
-  font-family: Nunito Sans, sans-serif;
-  position: relative;
-  left:250px;
+  background-color: pink;
+  transform: translateY(-5px);
 }
 
-  .container{
-    margin-right:270px;
+#disclaimer {
+  position: relative;
+  left: 250px;
+  top: 30px;
+  font-family: Nunito Sans, sans-serif;
+}
+
+.container p {
+  font-family: Nunito Sans, sans-serif;
+  position: relative;
+  left: 250px;
+}
+
+.container {
+  margin-right: 270px;
+}
+
+#reference {
+  margin-left: 250px;
+  margin-top: 130px;
+}
+
+/* Media Queries for Responsive Design */
+
+/* For tablets (screen width less than 768px) */
+@media (max-width: 768px) {
+  #disclaimer {
+    left: 220px; /* Adjust positioning */
+    font-size: 24px; /* Reduce font size */
   }
+
+  .container p {
+    left: 220px; /* Adjust positioning */
+    font-size: 14px; /* Reduce font size */
+  }
+
+  .container {
+    margin-right: 20px; /* Reduce margin */
+  }
+
+  #reference {
+    margin-left: 220px; /* Adjust positioning */
+    font-size: 14px; /* Reduce font size */
+  }
+}
+
+/* For mobile devices (screen width less than 480px) */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 24px; /* Reduce header font size */
+  }
+
+  #icon {
+    height: 40px; /* Reduce icon size */
+    width: 50px;
+  }
+
+  #sidemenu {
+    width: 100%; /* Make side menu full width */
+    height: auto; /* Auto height for mobile */
+    position: relative; /* Remove fixed positioning */
+  }
+
+  .menu-item {
+    padding: 10px; /* Reduce padding for menu items */
+    text-align: center; /* Center menu items */
+  }
+
+  #disclaimer {
+    left: 20px; /* Remove large left positioning */
+    top: 20px; /* Adjust top positioning */
+    font-size: 20px; /* Reduce font size */
+    text-align: center; /* Center the text */
+  }
+
+  .container p {
+    left: 20px; /* Remove large left positioning */
+    font-size: 12px; /* Reduce font size */
+    text-align: justify; /* Justify text for better readability */
+  }
+
+  .container {
+    margin-right: 20px; /* Reduce margin */
+  }
+
+  #reference {
+    margin-left: 20px; /* Remove large left positioning */
+    margin-top: 50px; /* Adjust top margin */
+    font-size: 12px; /* Reduce font size */
+    text-align: center; /* Center the text */
+  }
+
+  footer {
+    position: relative; /* Remove absolute positioning */
+    margin-top: 20px; /* Add margin to separate from content */
+  }
+}
