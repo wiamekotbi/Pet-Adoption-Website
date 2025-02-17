@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,84 +13,80 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Bangers&family=Caveat:wght@400..700&family=Faculty+Glyphic&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
-    
 </head>
 <body>
     <header>
         <div class="head">
-        <h1>Purrfect Pals<a href="main.html"><img src="icon.png" id="icon" alt="logo"/>
-    </a></h1></div>
-</header>
-
-<div id="sidemenu">
-    <ul>
-        <li><a href="main.html" class="menu-item">Home page</a></li>
-        <li><a href="browse.html" class="menu-item">Browse Available Pets</a></li>
-        <li><a href="find.html" class="menu-item">Find a dog/cat</a></li>
-        <li><a href="dogcare.html" class="menu-item">Dog Care</a></li>
-        <li><a href="catcare.html" class="menu-item">Cat Care</a></li>
-        <li><a href="away.html" class="menu-item">Have a pet to give away</a></li>
-        <li><a href="contactus.html" class="menu-item">Contact Us</a></li>
-    </ul>
-
-</div>
-
-<div id="mainarea"> 
-    <form>
-        <div id="bigbox">
-            <h1> ADOPT A CAT OR A DOG 
-            </h1>
-           <label>
-            <strong>Cat or Dog ? </strong>
-            Cat
-            <input type="radio" name="choice" value="cat">
-            Dog <input type="radio" name="choice" value="cat"><br>
-           <br> <strong>Breed of Dog or Cat </strong>
-           <select name="breed" size="1">
-            <option value="" disabled selected>Select a breed</option>
-            <option value="Bulldog">Bulldog</option>
-            <option value="Beagle">Beagle</option>
-            <option value="Poodle">Poodle</option>
-            <option value="Siamese">Siamese</option>
-            <option value="Sphynx">Sphynx</option>
-            <option value="Persian">Persian</option>
-            <option value="doesntmatter">Doesn't matter</option>
-          </select> <br><br>
-          <strong>Preferred Age Range of Animal</strong>
-          <select name="breed" size="1">
-            <option value="" disabled selected>Select preferred age</option>
-            <option value="0-1">0-1 years</option>
-            <option value="2-4">2-4 years</option>
-            <option value="5">5+ years</option>
-            <option value="doesntmatter2">Doesn't matter</option>
-          </select> <br><br>
-
-          <strong>Preferred gender</strong>  <input type="radio" name="gender" value="female">
-          Female <input type="radio" name="gender" value="male">Male <input type="radio" name="gender" value="dontcare">Doesn't matter <br><br>
-
-   <strong>Compatibility with Other Animals/People</strong><br>
-  <input type="checkbox" name="compatibility" value="Dogs">
-  <label for="dogs">Needs to get along with other dogs</label><br>
-  
-  <input type="checkbox" name="compatibility" value="Cats">
-  <label for="cats">Needs to get along with other cats</label><br>
-  
-  <input type="checkbox" name="compatibility" value="Children">
-  <label for="children">Needs to get along with small children</label><br>
-
-
-           </label>
-
-        
-           <input type="submit" value="SUBMIT ADOPTION FORM"/>
-           <input type="reset" value="RESET"/>
+            <h1>Purrfect Pals<a href="main.html"><img src="icon.png" id="icon" alt="logo"></a></h1>
         </div>
-    </form>
+    </header>
 
+    <div id="sidemenu">
+        <ul>
+            <li><a href="main.html" class="menu-item">Home page</a></li>
+            <li><a href="browse.html" class="menu-item">Browse Available Pets</a></li>
+            <li><a href="find.html" class="menu-item">Find a dog/cat</a></li>
+            <li><a href="dogcare.html" class="menu-item">Dog Care</a></li>
+            <li><a href="catcare.html" class="menu-item">Cat Care</a></li>
+            <li><a href="away.html" class="menu-item">Have a pet to give away</a></li>
+            <li><a href="contactus.html" class="menu-item">Contact Us</a></li>
+        </ul>
+    </div>
 
-     </div><br><br><br>
+    <div id="mainarea"> 
+        <form>
+            <div id="bigbox">
+                <h1>ADOPT A CAT OR A DOG</h1>
 
-  
+                <label for="cat"><strong>Cat or Dog?</strong></label>
+                Cat <input type="radio" name="choice" value="cat" id="cat">
+                Dog <input type="radio" name="choice" value="dog" id="dog"><br><br>
+
+                <strong>Breed of Dog or Cat</strong>
+                <select name="breed" size="1">
+                    <option value="" disabled selected>Select a breed</option>
+                    <option value="Bulldog">Bulldog</option>
+                    <option value="Beagle">Beagle</option>
+                    <option value="Poodle">Poodle</option>
+                    <option value="Siamese">Siamese</option>
+                    <option value="Sphynx">Sphynx</option>
+                    <option value="Persian">Persian</option>
+                    <option value="doesntmatter">Doesn't matter</option>
+                </select><br><br>
+
+                <strong>Preferred Age Range of Animal</strong>
+                <select name="age" size="1">
+                    <option value="" disabled selected>Select preferred age</option>
+                    <option value="0-1">0-1 years</option>
+                    <option value="2-4">2-4 years</option>
+                    <option value="5">5+ years</option>
+                    <option value="doesntmatter2">Doesn't matter</option>
+                </select><br><br>
+
+                <strong>Preferred Gender</strong>
+                <input type="radio" name="gender" value="female" id="female">
+                <label for="female">Female</label>
+                <input type="radio" name="gender" value="male" id="male">
+                <label for="male">Male</label>
+                <input type="radio" name="gender" value="dontcare" id="dontcare">
+                <label for="dontcare">Doesn't matter</label><br><br>
+
+                <strong>Compatibility with Other Animals/People</strong><br>
+
+                <input type="checkbox" name="compatibility" value="Dogs" id="dogs">
+                <label for="dogs">Needs to get along with other dogs</label><br>
+
+                <input type="checkbox" name="compatibility" value="Cats" id="cats">
+                <label for="cats">Needs to get along with other cats</label><br>
+
+                <input type="checkbox" name="compatibility" value="Children" id="children">
+                <label for="children">Needs to get along with small children</label><br>
+
+                <input type="submit" value="SUBMIT ADOPTION FORM">
+                <input type="reset" value="RESET">
+            </div>
+        </form>
+    </div><br><br><br>
 
     <footer>
         <p>&copy; 2025 Purrfect Pals. All Rights Reserved.</p>
