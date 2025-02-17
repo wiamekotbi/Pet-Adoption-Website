@@ -1,4 +1,3 @@
-/* Default styles for larger screens (desktop) */
 header {
   background-color: pink;
   font-family: Atma, sans-serif;
@@ -7,9 +6,9 @@ header {
   justify-content: flex-start;
   align-items: center;
   padding: 5px;
-  position: sticky; /* Make the header sticky */
-  top: 0; /* Stick to the top of the viewport */
-  z-index: 1000; /* Ensure it stays above other content */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 #icon {
@@ -54,17 +53,17 @@ footer {
   text-align: center;
   padding: 5px 0px;
   font-family: 'Times New Roman', Times, serif;
-  position: fixed; /* Stick to the bottom of the viewport */
+  position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 1000; /* Ensure it stays above other content */
+  z-index: 1000;
 }
 
 body {
   margin: 0;
   font-family: Nunito Sans, sans-serif;
   background-color: rgb(249, 238, 240);
-  padding-bottom: 60px; /* Add padding to prevent footer overlap */
+  padding-bottom: 60px;
 }
 
 section {
@@ -98,74 +97,70 @@ section {
   transform: translateY(-5px);
 }
 
-/* Media Queries for Responsive Design */
-
-/* For tablets (screen width less than 768px) */
 @media (max-width: 820px) {
   #quote {
-    font-size: 18px; /* Reduce font size */
+    font-size: 18px;
   }
 
   section {
-    margin-left: 220px; /* Adjust margin */
+    margin-left: 220px;
   }
 
   #guide {
-    margin-left: 220px; /* Adjust margin */
+    margin-left: 220px;
   }
 
   #guide p {
-    margin-left: 20px; /* Adjust margin */
-    display: block; /* Stack the content */
+    margin-left: 20px;
+    display: block;
   }
 }
 
-/* For mobile devices (screen width less than 480px) */
 @media (max-width: 480px) {
   header h1 {
-    font-size: 24px; /* Reduce header font size */
+    font-size: 24px;
   }
 
   #icon {
-    height: 40px; /* Reduce icon size */
+    height: 40px;
     width: 50px;
   }
 
   #sidemenu {
-    width: 100%; /* Make side menu full width */
-    height: auto; /* Auto height for mobile */
-    position: relative; /* Remove fixed positioning */
+    width: 100%;
+    height: auto;
+    position: relative;
   }
 
   .menu-item {
-    padding: 10px; /* Reduce padding for menu items */
-    text-align: center; /* Center menu items */
+    padding: 10px;
+    text-align: center;
   }
 
   #quote {
-    font-size: 16px; /* Further reduce font size */
-    text-align: center; /* Center the text */
+    font-size: 16px;
+    text-align: center;
   }
 
   section {
-    margin-left: 20px; /* Remove large left margin */
-    text-align: justify; /* Justify text for better readability */
+    margin-left: 20px;
+    text-align: justify;
     margin-right: 20px;
   }
 
   #guide {
-    margin-left: 20px; /* Remove large left margin */
+    margin-left: 20px;
   }
 
   #guide p {
-    margin-left: 0; /* Remove large left margin */
-    text-align: center; /* Center the text */
+    margin-left: 0;
+    text-align: center;
   }
 
   footer {
-    position: fixed; /* Keep it fixed on mobile */
-    bottom: 0; /* Stick to the bottom */
+    position: fixed;
+    bottom: 0;
     left: 0;
-    z-index: 1000; /* Ensure it stays above other content */
+    z-index: 1000;
   }
 }

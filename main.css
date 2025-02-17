@@ -1,4 +1,4 @@
-/* Default styles for larger screens (desktop) */
+
 header {
   background-color: pink;
   font-family: Atma, sans-serif;
@@ -70,7 +70,7 @@ footer {
 body {
   margin: 0;
   background-color: rgb(249, 238, 240);
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden; 
 }
 
 #sidemenu {
@@ -105,7 +105,7 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Media Queries for Responsive Design */
+
 
 @media (max-width: 1200px) {
   #welcome {
