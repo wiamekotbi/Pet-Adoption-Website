@@ -12,6 +12,20 @@ header {
   z-index: 1000;
 }
 
+
+.head {
+  display: flex;
+  justify-content: space-between; /* Align items to the left and right */
+  align-items: center;
+  width: 100%; /* Ensure the header takes full width */
+}
+
+#date {
+  font-family: 'Nunito Sans', sans-serif;
+  margin-left: auto; /* Push the date to the right */
+  padding-right: 20px; /* Add some spacing from the right edge */
+}
+
 #icon {
   height: 50px;
   width: 60px;
