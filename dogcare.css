@@ -3,12 +3,23 @@ header {
   font-family: Atma, sans-serif;
   height: 70px;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   padding: 5px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  z-index: 10;
+  position: relative;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between; /* Align items to the left and right */
+  align-items: center;
+  width: 100%; /* Ensure the header takes full width */
+}
+
+#date {
+  font-family: 'Nunito Sans', sans-serif;
+  margin-left: auto; /* Push the date to the right */
+  padding-right: 20px; /* Add some spacing from the right edge */
 }
 
 #icon {
