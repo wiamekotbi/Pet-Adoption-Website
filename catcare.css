@@ -3,11 +3,14 @@ header {
   font-family: Atma, sans-serif;
   height: 70px;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   padding: 5px;
-  z-index: 10;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
+
 
 .head {
   display: flex;
