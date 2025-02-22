@@ -144,6 +144,7 @@ footer {
 }
 
 @media (max-width: 576px) {
+  
   #sidemenu {
     position: relative;
     width: 100%;
@@ -168,9 +169,6 @@ footer {
     justify-content: center;
   }
   
-  #icon {
-    height: 40px;
-  }
   
  
   footer {
