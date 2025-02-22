@@ -35,16 +35,16 @@
     </div>
 
     <div id="mainarea"> 
-        <form>
+        <form id="form">
             <div id="bigbox">
                 <h1>ADOPT A CAT OR A DOG</h1>
 
-                <label for="cat"><strong>Cat or Dog?</strong></label>
+                <label for="catOrDog"><strong>Cat or Dog?</strong></label>
                 Cat <input type="radio" name="choice" value="cat" id="cat">
                 Dog <input type="radio" name="choice" value="dog" id="dog"><br><br>
 
                 <strong>Breed of Dog or Cat</strong>
-                <select name="breed" size="1">
+                <select name="breed" id="breed" size="1">
                     <option value="" disabled selected>Select a breed</option>
                     <option value="Bulldog">Bulldog</option>
                     <option value="Beagle">Beagle</option>
@@ -56,7 +56,7 @@
                 </select><br><br>
 
                 <strong>Preferred Age Range of Animal</strong>
-                <select name="age" size="1">
+                <select name="age" id="age" size="1">
                     <option value="" disabled selected>Select preferred age</option>
                     <option value="0-1">0-1 years</option>
                     <option value="2-4">2-4 years</option>
@@ -85,7 +85,9 @@
 
                 <input type="submit" value="SUBMIT ADOPTION FORM">
                 <input type="reset" value="RESET">
+                <p id="error"></p>
             </div>
+            
         </form>
     </div><br><br><br>
 
@@ -95,5 +97,6 @@
     </footer>
 
     <script src="date.js"></script> 
+    <script src="find.js"></script> 
 </body>
 </html>
