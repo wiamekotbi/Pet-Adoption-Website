@@ -36,15 +36,15 @@
     </ul>
 </div>
 
-<form>
+<form id="form">
     <h2>Have a Pet to Give Away</h2>
 
     <label>Cat or Dog?</label>
-    <input type="radio" name="petType" value="cat"> Cat
-    <input type="radio" name="petType" value="dog"> Dog<br>
+    <input type="radio" name="petType" value="cat" id="cat"> Cat
+    <input type="radio" name="petType" value="dog" id="dog"> Dog<br>
 
     <label>Breed of Dog or Cat</label>
-    <select name="breed">
+    <select name="breed" id="breed">
         <option value="" disabled selected>Select a breed</option>
         <option value="Mixed Breed">Mixed Breed</option>
         <option value="Bulldog">Bulldog</option>
@@ -56,7 +56,7 @@
     </select>
 
     <label>Age of Animal</label>
-    <select name="age">
+    <select name="age" id="age">
         <option value="" disabled selected>Select age range</option>
         <option value="0-1">0-1 years</option>
         <option value="2-4">2-4 years</option>
@@ -64,34 +64,35 @@
     </select>
 
     <label>Animal Gender</label>
-    <input type="radio" name="gender" value="male"> Male
-    <input type="radio" name="gender" value="female"> Female
+    <input type="radio" name="gender" value="male" id="male"> Male
+    <input type="radio" name="gender" value="female" id="female"> Female
 
     <br><br>
     <label>Compatibility</label>
     <div class="checkbox-group">
-        <input type="checkbox" name="compatibility" value="dogs"> <span>Gets along with other dogs</span>
+        <input type="checkbox" name="compatibility" value="dogs" id="dogs"> <span>Gets along with other dogs</span>
     </div>
     <div class="checkbox-group">
-        <input type="checkbox" name="compatibility" value="cats"> <span>Gets along with other cats</span>
+        <input type="checkbox" name="compatibility" value="cats" id="cats"> <span>Gets along with other cats</span>
     </div>
     <div class="checkbox-group">
-        <input type="checkbox" name="compatibility" value="children"> <span>Suitable for families with small children</span>
+        <input type="checkbox" name="compatibility" value="children" id="children"> <span>Suitable for families with small children</span>
     </div>
 
     <label>Tell us about your pet</label>
-    <textarea name="description" placeholder="Brag about your pet!"></textarea>
+    <textarea name="description" placeholder="Brag about your pet!" id="description"></textarea>
 
     <label>Owner's Name</label>
-    <input type="text" name="ownerName" placeholder="First and Last Name" required>
+    <input type="text" name="ownerName" id="ownerName"placeholder="First and Last Name" required>
 
     <label>Owner's Email</label>
-    <input type="email" name="ownerEmail" placeholder="Your email" required>
+    <input type="email" name="ownerEmail" id="ownerEmail" placeholder="Your email" required>
 
     <div class="button-group">
         <button type="submit">Submit</button>
         <button type="reset">Clear</button>
     </div>
+    <p id="error"></p>
 </form>
 
 
@@ -101,5 +102,6 @@
 </footer>
  
 <script src="date.js"></script> 
+<script src="away.js"></script> 
 </body>
 </html>
