@@ -37,17 +37,19 @@ header {
   top: 12px;
 }
 
+/* Main container for sidemenu and content */
+.main-container {
+  display: flex;
+  flex: 1; /* Takes up remaining space */
+}
+
 #sidemenu {
-  position: absolute;
   background-color: rgb(248, 224, 228);
-  height: calc(100vh - 70px); /* Fixed height based on viewport */
-  width: 200px;
-  top: 70px; /* Align below the header */
-  left: 0;
-  z-index: 5; /* Lower than header */
+  width: 200px; /* Fixed width for the side menu */
   overflow-y: auto; /* Allow scrolling if content overflows */
   padding-top: 10px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* Prevents the sidemenu from shrinking */
 }
 
 ul {
@@ -69,15 +71,16 @@ ul {
   transform: translateY(-5px);
 }
 
+/* Content area */
 .pet-container {
+  flex: 1; /* Takes up remaining space */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 100px;
-  margin: 30px auto;
-  margin-left: 220px; /* Add margin to avoid overlap with sidemenu */
+  margin: 30px auto; /* Centers horizontally */
   margin-bottom: 100px;
-  padding-bottom: 80px; /* Add padding to avoid overlap with footer */
-  max-width: 800px; /* Optional: Limit width for better readability */
+  padding-bottom: 80px;
+  max-width: 800px; /* Controls width */
   font-family: Nunito Sans, sans-serif;
 }
 
@@ -96,8 +99,8 @@ ul {
   border-radius: 10px;
 }
 
-.interested{
-  background-color:white;
+.interested {
+  background-color: white;
   border-radius: 10px;
   border: none;
   color: black;
@@ -107,22 +110,23 @@ ul {
   display: inline-block;
   font-size: 14px;
   margin-top: 15px;
-  transition: background-color 0.3s, color 0.3s; 
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .interested:hover {
-  background-color:pink; 
-  color: white; 
-
+  background-color: pink;
+  color: white;
 }
+
 footer {
   background-color: rgb(199, 249, 244);
   width: 100%;
   text-align: center;
   padding: 5px 0px;
-  position: relative; 
-  margin-top: 20px; 
-  z-index: 1;}
+  position: relative;
+  margin-top: auto; /* Pushes footer to the bottom */
+  z-index: 1;
+}
 
 a {
   text-decoration: none;
@@ -130,7 +134,7 @@ a {
 
 @media (max-width: 820px) {
   .pet-container {
-    gap: 50px; 
+    gap: 50px;
     margin-left: 180px;
   }
 }
