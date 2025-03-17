@@ -137,34 +137,59 @@ section {
 }
 
 @media (max-width: 480px) {
-  header h1 {
-    font-size: 24px;
+  h1{
+    font-size: 20px;
   }
+  header {
+    padding: 5px 10px; /* Reduce padding for mobile */
+  }
+
+  .head {
+    padding: 0 10px; /* Reduce padding for mobile */
+  }
+
+  #date {
+    padding-right: 10px; /* Reduce spacing for mobile */
+    font-size: 12px; /* Adjust font size for mobile */
+  }
+
   #icon {
-    height: 40px;
-    width: 50px;
+    height: 30px; /* Smaller icon for mobile */
+    width: 40px;
+    top: 8px; /* Adjust icon position */
   }
+
   #sidemenu {
     width: 100%;
     height: auto;
     position: relative;
   }
+
   .menu-item {
     padding: 10px;
     text-align: center;
   }
-  #guide,
-  #guide p {
-    margin-left: 20px;
-    margin-right: 20px;
+
+  #quote {
+    font-size: 16px;
     text-align: center;
   }
+
+  section {
+    margin-left: 20px;
+    text-align: justify;
+    margin-right: 20px;
+  }
+
   #guide {
-    font-size: 20px;
+    margin-left: 20px;
   }
-  .slabo-27px-regular {
-    font-size: 20px;
+
+  #guide p {
+    margin-left: 0;
+    text-align: center;
   }
+
   footer {
     position: fixed;
     bottom: 0;

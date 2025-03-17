@@ -207,7 +207,30 @@ button[type="reset"]:hover {
 }
 
 
-@media (max-width: 480px) { form {
+@media (max-width: 480px) {
+  h1{
+    font-size: 20px;
+  }
+  header {
+    padding: 5px 10px; /* Reduce padding for mobile */
+  }
+
+  .head {
+    padding: 0 10px; /* Reduce padding for mobile */
+  }
+
+  #date {
+    padding-right: 10px; /* Reduce spacing for mobile */
+    font-size: 12px; /* Adjust font size for mobile */
+  }
+
+  #icon {
+    height: 30px; /* Smaller icon for mobile */
+    width: 40px;
+    top: 8px; /* Adjust icon position */
+  }
+  
+  form {
   width: 90%;
   margin: 30px auto; 
 }
