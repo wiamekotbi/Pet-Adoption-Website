@@ -78,6 +78,7 @@ ul {
   margin-bottom: 100px;
   padding-bottom: 80px; /* Add padding to avoid overlap with footer */
   max-width: 800px; /* Optional: Limit width for better readability */
+  font-family: Nunito Sans, sans-serif;
 }
 
 .pet {
@@ -95,15 +96,33 @@ ul {
   border-radius: 10px;
 }
 
+.interested{
+  background-color:white;
+  border-radius: 10px;
+  border: none;
+  color: black;
+  padding: 10px 27px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 15px;
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+.interested:hover {
+  background-color:pink; 
+  color: white; 
+
+}
 footer {
   background-color: rgb(199, 249, 244);
   width: 100%;
   text-align: center;
   padding: 5px 0px;
-  position: relative; /* Changed from fixed to relative */
-  margin-top: 20px; /* Add space above the footer */
-  z-index: 1; /* Ensure footer stays below the sidemenu */
-}
+  position: relative; 
+  margin-top: 20px; 
+  z-index: 1;}
 
 a {
   text-decoration: none;
@@ -111,7 +130,7 @@ a {
 
 @media (max-width: 820px) {
   .pet-container {
-    gap: 50px; /* Reduce gap for smaller screens */
+    gap: 50px; 
     margin-left: 180px;
   }
 }
