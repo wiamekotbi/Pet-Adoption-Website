@@ -13,16 +13,15 @@ header {
 
 .head {
   display: flex;
-  justify-content: space-between; /* Align items to the left and right */
+  justify-content: space-between; 
   align-items: center;
-  width: 100%; /* Ensure the header takes full width */
+  width: 100%; 
 }
 
 #date {
   font-family: 'Nunito Sans', sans-serif;
-  margin-left: auto; /* Push the date to the right */
-  padding-right: 20px; /* Add some spacing from the right edge */
-}
+  margin-left: auto; 
+  padding-right: 20px; }
 
 #icon {
   height: 50px;
@@ -134,22 +133,22 @@ section {
     font-size: 20px;
   }
   header {
-    padding: 5px 10px; /* Reduce padding for mobile */
+    padding: 5px 10px; 
   }
 
   .head {
-    padding: 0 10px; /* Reduce padding for mobile */
+    padding: 0 10px; 
   }
 
   #date {
-    padding-right: 10px; /* Reduce spacing for mobile */
-    font-size: 12px; /* Adjust font size for mobile */
+    padding-right: 10px; 
+    font-size: 12px; 
   }
 
   #icon {
-    height: 30px; /* Smaller icon for mobile */
+    height: 30px;
     width: 40px;
-    top: 8px; /* Adjust icon position */
+    top: 8px; 
   }
 
   #sidemenu {
