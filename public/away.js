@@ -1,5 +1,6 @@
 document.getElementById("form").addEventListener("submit", function(event) {
     event.preventDefault();
+
   
     // Clear the error message initially
     let errorMessage = "";

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Purrfect Pals </title>
-    <link rel="stylesheet" href="catcare.css">
+    <link rel="stylesheet" href="/catcare.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Bangers&family=Caveat:wght@400..700&family=Faculty+Glyphic&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -19,26 +19,20 @@
 
 </head>
 <body>
-    <header>
-        <div class="head">
-        <h1>Purrfect Pals<a href="main.html"><img src="icon.png" id="icon" alt="logo">
-    </a></h1>
-    <p id="date"></p>
-</div>
-</header>
+    <%- include('header') %>
 
-<div id="sidemenu">
-    <ul>
-        <li><a href="main.html" class="menu-item">Home page</a></li>
-        <li><a href="pets.html" class="menu-item">Browse Available Pets</a></li>
-        <li><a href="find.html" class="menu-item">Find a dog/cat</a></li>
-        <li><a href="dogcare.html" class="menu-item">Dog Care</a></li>
-        <li><a href="catcare.html" class="menu-item">Cat Care</a></li>
-        <li><a href="away.html" class="menu-item">Have a pet to give away</a></li>
-        <li><a href="contactus.html" class="menu-item">Contact Us</a></li>
-    </ul>
-
-</div>
+    <div id="sidemenu">
+        <ul>
+            <li><a href="/" class="menu-item">Home page</a></li>
+            <li><a href="/pets" class="menu-item">Browse Available Pets</a></li>
+            <li><a href="/find" class="menu-item">Find a dog/cat</a></li>
+            <li><a href="/dogcare" class="menu-item">Dog Care</a></li>
+            <li><a href="/catcare" class="menu-item">Cat Care</a></li>
+            <li><a href="/away" class="menu-item">Have a pet to give away</a></li>
+            <li><a href="/contactus" class="menu-item">Contact Us</a></li>
+        </ul>
+    
+    </div>
 
 <section>
     <p id="quote">Caring for your dog or cat is more than just feeding them. It involves ensuring they are physically, mentally, and emotionally healthy ♡</p>
@@ -78,10 +72,6 @@
 
 
 
-<footer>
-    <p>&copy; 2025 Purrfect Pals. All Rights Reserved.</p>
-    <p><a href="privacy.html">Privacy Policy | Disclaimer</a></p>
-</footer>
-<script src="date.js"></script>      
+    <%- include('footer') %>       
 </body>
 </html>
