@@ -1,3 +1,4 @@
+
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -33,7 +34,7 @@ if (!fs.existsSync(dataDir)) {
 // Helper functions
 function verifyUser(username) {
     if (!fs.existsSync(usersFilePath)) return false;
-    
+
     const usersData = fs.readFileSync(usersFilePath, 'utf8');
     const users = usersData.trim().split('\n');
     return users.some(user => {
@@ -49,7 +50,7 @@ function registerUser(username, password) {
 
 function getNextPetId() {
     if (!fs.existsSync(petsFilePath)) return 1;
-    
+
     const petsData = fs.readFileSync(petsFilePath, 'utf8');
     const lines = petsData.trim().split('\n');
     return lines.reduce((maxId, line) => {
@@ -58,23 +59,59 @@ function getNextPetId() {
     }, 0) + 1;
 }
 
+function searchPets(criteria) {
+    const { type, breed, age, gender, otherdogs, othercats, smallchildren } = criteria;
+    const petsData = fs.readFileSync(petsFilePath, 'utf8');
+    const pets = petsData.trim().split('\n').map(line => {
+        const parts = line.split(':');
+        return {
+            id: parts[0],
+            username: parts[1],
+            type: parts[2],
+            breed: parts[3],
+            age: parts[4],
+            gender: parts[5],
+            getsAlongWithOtherDogs: parts[6] === "yes",
+            getsAlongWithCats: parts[7] === "yes",
+            getsAlongWithChildren: parts[8] === "yes",
+            description: parts[9],
+            ownerFirstName: parts[10],
+            ownerLastName: parts[11],
+            ownerEmail: parts[12]
+        };
+    });
+
+    return pets.filter(pet => {
+        const breedMatch = breed === "Doesn't matter" || pet.breed.toLowerCase().includes(breed.toLowerCase());
+        const ageMatch = age === "Doesn't matter" || pet.age === age;
+        const genderMatch = gender === "Doesn't matter" || pet.gender.toLowerCase() === gender.toLowerCase();
+        const dogsMatch = !otherdogs || pet.getsAlongWithOtherDogs;
+        const catsMatch = !othercats || pet.getsAlongWithCats;
+        const childrenMatch = !smallchildren || pet.getsAlongWithChildren;
+
+        return pet.type.toLowerCase() === type.toLowerCase() && breedMatch && ageMatch && genderMatch && dogsMatch && catsMatch && childrenMatch;
+    });
+}
+
 // Routes
-app.get('/', (req, res) => res.render('index', { title: 'Home' }));
-app.get('/dog-care', (req, res) => res.render('dog-care', { title: 'Dog Care' }));
-app.get('/cat-care', (req, res) => res.render('cat-care', { title: 'Cat Care' }));
-app.get('/contact', (req, res) => res.render('contact', { title: 'Contact Us' }));
-app.get('/find-pet', (req, res) => res.render('find-pet', { title: 'Find a Pet', pets: undefined }));
+app.get('/', (req, res) => res.render('main', { title: 'Home' }));
+app.get('/dogcare', (req, res) => res.render('dogcare', { title: 'Dog Care' }));
+app.get('/catcare', (req, res) => res.render('catcare', { title: 'Cat Care' }));
+app.get('/contactus', (req, res) => res.render('contactus', { title: 'Contact Us' }));
+app.get('/find', (req, res) => res.render('find', { title: 'Find a Pet', pets: undefined }));
+app.get('/pets', (req, res) => res.render('pets', { title: 'Pets' }));
+app.get('/privacy', (req, res) => res.render('privacy', { title: 'Privacy' }));
 
 // Account routes
 app.get('/register', (req, res) => res.render('register', { title: 'Create Account' }));
 
 app.post('/register', (req, res) => {
     const { username, password } = req.body;
-    
+
     if (verifyUser(username)) {
         return res.status(409).json({ message: "Username already exists" });
     }
-    
+
     registerUser(username, password);
     res.json({ message: "Account created successfully" });
 });
@@ -84,32 +121,42 @@ app.get('/login', (req, res) => res.render('login', { title: 'Login' }));
 
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
-    
+
     if (verifyUser(username)) {
         req.session.username = username;
-        return res.redirect('/give-away');
+        return res.redirect('/away');
     }
-    
+
     res.send('Login failed');
 });
 
 // Pet routes
-app.get('/give-away', (req, res) => {
-    if (!req.session.username) {
+app.get('/away', (req, res) => {
+   /* if (!req.session.username) {
         return res.redirect('/login');
-    }
-    res.render('give-away', { title: 'Give Away Pet' });
+    }*/
+    res.render('away', { title: 'Give Away Pet' });
 });
 
-app.post('/give-away', (req, res) => {
-    if (!req.session.username) {
+app.post('/away', (req, res) => {
+   /* if (!req.session.username) {
         return res.redirect('/login');
-    }
+    }*/
 
     const petId = getNextPetId();
     const petRecord = `${petId}:${req.session.username}:${Object.values(req.body).join(':')}\n`;
     fs.appendFileSync(petsFilePath, petRecord);
     res.send('Pet registered successfully');
+});
+
+// Find Pet routes
+app.get('/find', (req, res) => {
+    res.render('find', { title: 'Find a Pet', pets: undefined });
+});
+
+app.post('/find', (req, res) => {
+    const results = searchPets(req.body);
+    res.render('find', { title: 'Find a Pet', pets: results });
 });
 
 // Logout

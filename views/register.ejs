@@ -33,7 +33,7 @@
     
     </div>
     <div id="mainarea">
-        <form id="form" action="/register" method="POST">
+        <form id="register-form" action="/register" method="POST">
             <h3>Create an Account</h3>
             <p>Username can contain letters and digits only.</p>
             <p>Password must be at least 4 characters long, contain at least one letter and one digit.</p>
@@ -43,13 +43,15 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" 
                        pattern="(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}" required> <br><br>
+                       <div id="success-message"></div>
+                       <div id="error-message"></div>
                 <button type="submit">Create Account</button>
             </form>
-            <div id="error"></div>
+        
      
     </div>
 
 <%- include('footer') %>     
-<script src="/js/form-validation.js"></script>
+<script src="form-validation.js"></script>
 </body>
 </html>
