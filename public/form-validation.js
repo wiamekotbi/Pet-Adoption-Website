@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('register-form'); // Fix: Correct ID
+    const form = document.getElementById('register-form'); 
     if (form) {
         form.addEventListener('submit', async function (e) {
             e.preventDefault(); // Prevent default submission
@@ -44,4 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+
 

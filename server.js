@@ -122,26 +122,50 @@ app.get('/login', (req, res) => res.render('login', { title: 'Login' }));
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    if (verifyUser(username)) {
-        req.session.username = username;
-        return res.redirect('/away');
+    if (!fs.existsSync(usersFilePath)) {
+        return res.status(401).json({ 
+            success: false,
+            message: "No account was found" 
+        });
     }
 
-    res.send('Login failed');
+    const usersData = fs.readFileSync(usersFilePath, 'utf8');
+    const users = usersData.trim().split('\n');
+    
+    const userFound = users.find(user => {
+        const [storedUsername, storedPassword] = user.split(':');
+        return storedUsername === username && storedPassword === password;
+    });
+
+    if (userFound) {
+        req.session.username = username;
+        return res.json({ 
+            success: true,
+            redirect: '/away'  // Tell client to redirect
+        });
+    } else {
+        return res.status(401).json({ 
+            success: false,
+            message: "Invalid username or password" 
+        });
+    }
 });
+
+
+
 
 // Pet routes
 app.get('/away', (req, res) => {
-   /* if (!req.session.username) {
+    if (!req.session.username) {
         return res.redirect('/login');
-    }*/
+    }
     res.render('away', { title: 'Give Away Pet' });
 });
 
 app.post('/away', (req, res) => {
-   /* if (!req.session.username) {
+    if (!req.session.username) {
         return res.redirect('/login');
-    }*/
+    }
 
     const petId = getNextPetId();
     const petRecord = `${petId}:${req.session.username}:${Object.values(req.body).join(':')}\n`;
