@@ -163,14 +163,34 @@ app.get('/away', (req, res) => {
 });
 
 app.post('/away', (req, res) => {
-    if (!req.session.username) {
-        return res.redirect('/login');
-    }
+    if (req.session.username) {
+        const { 
+            type, 
+            breed, 
+            age, 
+            gender, 
+            otherdogs, 
+            othercats, 
+            smallchildren, 
+            description, 
+            ownerFirstName, 
+            ownerLastName, 
+            ownerEmail 
+        } = req.body;
 
-    const petId = getNextPetId();
-    const petRecord = `${petId}:${req.session.username}:${Object.values(req.body).join(':')}\n`;
-    fs.appendFileSync(petsFilePath, petRecord);
-    res.send('Pet registered successfully');
+        const petId = getNextPetId();
+        const petRecord = `${petId}:${req.session.username}:${type}:${breed}:${age}:${gender}:${otherdogs ? 'yes' : 'no'}:${othercats ? 'yes' : 'no'}:${smallchildren ? 'yes' : 'no'}:${description}:${ownerFirstName}:${ownerLastName}:${ownerEmail}\n`;
+
+        try {
+            fs.appendFileSync(petsFilePath, petRecord, 'utf8');
+            res.status(200).send('Pet registered successfully.');
+        } catch (error) {
+            console.error('Error writing to pets file:', error);
+            res.status(500).send('Error registering pet.');
+        }
+    } else {
+        res.status(401).redirect('/login');
+    }
 });
 
 // Find Pet routes
