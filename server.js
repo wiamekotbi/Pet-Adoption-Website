@@ -6,61 +6,34 @@ const session = require('express-session');
 const app = express();
 const PORT = 3000;
 
-// Set EJS as the templating engine
+// Basic setup
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-// Middleware
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Session setup
 app.use(session({
-    secret: 'your_secret_key', // Change this to something more secure
+    secret: 'your_secret_key',
     resave: false,
     saveUninitialized: false
 }));
 
-// Paths to data files
-const usersFilePath = path.join(__dirname, 'data', 'users.txt');
-const petsFilePath = path.join(__dirname, 'data', 'pets.txt');
+// File paths
+const dataDir = path.join(__dirname, 'data');
+const usersFilePath = path.join(dataDir, 'users.txt');
+const petsFilePath = path.join(dataDir, 'pets.txt');
 
-// Routes
-app.get('/', (req, res) => {
-    res.render('main');
-});
+// Create data directory if it doesn't exist
+if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir);
+}
 
-app.get('/catcare', (req, res) => {
-    res.render('catcare');
-});
-
-app.get('/dogcare', (req, res) => {
-    res.render('dogcare');
-});
-
-app.get('/away', (req, res) => {
-    res.render('away');
-});
-
-app.get('/contactus', (req, res) => {
-    res.render('contactus');
-});
-
-app.get('/find', (req, res) => {
-    res.render('find');
-});
-
-app.get('/pets', (req, res) => {
-    res.render('pets');
-});
-
-app.get('/privacy', (req, res) => {
-    res.render('privacy');
-});
-
-// User registration and login routes
+// Helper functions
 function verifyUser(username) {
+    if (!fs.existsSync(usersFilePath)) return false;
+    
     const usersData = fs.readFileSync(usersFilePath, 'utf8');
     const users = usersData.trim().split('\n');
     return users.some(user => {
@@ -74,68 +47,78 @@ function registerUser(username, password) {
     fs.appendFileSync(usersFilePath, newUser, 'utf8');
 }
 
-// Login route
-app.get('/login', (req, res) => {
-    res.render('login'); // Render login.ejs
-});
+function getNextPetId() {
+    if (!fs.existsSync(petsFilePath)) return 1;
+    
+    const petsData = fs.readFileSync(petsFilePath, 'utf8');
+    const lines = petsData.trim().split('\n');
+    return lines.reduce((maxId, line) => {
+        const id = parseInt(line.split(':')[0]) || 0;
+        return id > maxId ? id : maxId;
+    }, 0) + 1;
+}
 
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    if (verifyUser(username)) {
-        req.session.username = username;
-        res.redirect('/away');
-    } else {
-        res.send('Login failed. Please try again.');
-    }
-});
+// Routes
+app.get('/', (req, res) => res.render('index', { title: 'Home' }));
+app.get('/dog-care', (req, res) => res.render('dog-care', { title: 'Dog Care' }));
+app.get('/cat-care', (req, res) => res.render('cat-care', { title: 'Cat Care' }));
+app.get('/contact', (req, res) => res.render('contact', { title: 'Contact Us' }));
+app.get('/find-pet', (req, res) => res.render('find-pet', { title: 'Find a Pet', pets: undefined }));
 
-// Register route
-app.get('/register', (req, res) => {
-    res.render('register'); // Render register.ejs
-});
+// Account routes
+app.get('/register', (req, res) => res.render('register', { title: 'Create Account' }));
 
 app.post('/register', (req, res) => {
     const { username, password } = req.body;
+    
     if (verifyUser(username)) {
-        res.send('Username already exists, please choose another one.');
-    } else {
-        registerUser(username, password);
-        res.send('Account created successfully. You can now login.');
+        return res.status(409).json({ message: "Username already exists" });
     }
+    
+    registerUser(username, password);
+    res.json({ message: "Account created successfully" });
 });
 
-// Pet registration
-function getNextPetId() {
-    const petsData = fs.readFileSync(petsFilePath, 'utf8');
-    const lastId = petsData.trim().split('\n').reduce((maxId, line) => {
-        const id = parseInt(line.split(':')[0]);
-        return id > maxId ? id : maxId;
-    }, 0);
-    return lastId + 1;
-}
+// Login routes
+app.get('/login', (req, res) => res.render('login', { title: 'Login' }));
 
-app.get('/give-away', (req, res) => {
-    if (req.session.username) {
-        res.render('give-away'); // Render the pet registration form
-    } else {
-        res.redirect('/login');
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    
+    if (verifyUser(username)) {
+        req.session.username = username;
+        return res.redirect('/give-away');
     }
+    
+    res.send('Login failed');
+});
+
+// Pet routes
+app.get('/give-away', (req, res) => {
+    if (!req.session.username) {
+        return res.redirect('/login');
+    }
+    res.render('give-away', { title: 'Give Away Pet' });
 });
 
 app.post('/give-away', (req, res) => {
-    if (req.session.username) {
-        const petData = req.body;
-        const petId = getNextPetId();
-        const petRecord = `${petId}:${req.session.username}:${Object.values(petData).join(':')}\n`;
-
-        fs.appendFileSync(petsFilePath, petRecord, 'utf8');
-        res.send('Pet registered successfully.');
-    } else {
-        res.redirect('/login');
+    if (!req.session.username) {
+        return res.redirect('/login');
     }
+
+    const petId = getNextPetId();
+    const petRecord = `${petId}:${req.session.username}:${Object.values(req.body).join(':')}\n`;
+    fs.appendFileSync(petsFilePath, petRecord);
+    res.send('Pet registered successfully');
 });
 
-// Start the server
+// Logout
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+});
+
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
