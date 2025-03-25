@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purrfect Paws</title>
+    <title>Purrfect Paws - Find a Pet</title>
 
     <link rel="stylesheet" href="/find.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Bangers&family=Caveat:wght@400..700&family=Faculty+Glyphic&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <%- include('header') %>
@@ -27,10 +28,8 @@
             <li><a href="/catcare" class="menu-item">Cat Care</a></li>
             <li><a href="/away" class="menu-item">Have a pet to give away</a></li>
             <li><a href="/contactus" class="menu-item">Contact Us</a></li>
-            <li><a href="/logout" class="menu-item">Log Out </a></li>
-
+            <li><a href="/logout" class="menu-item">Log Out</a></li>
         </ul>
-    
     </div>
 
     <div id="mainarea"> 
@@ -86,9 +85,35 @@
                 <input type="reset" value="RESET">
                 <p id="error"></p>
             </div>
-            
         </form>
-    </div><br><br><br>
+
+        <% if (locals.pets && pets.length > 0) { %>
+            <div id="results">
+                <h2>Matching Pets</h2>
+                <% pets.forEach(function(pet) { %>
+                    <div class="pet-card">
+                        <h3><%= pet.type.charAt(0).toUpperCase() + pet.type.slice(1) %> - <%= pet.breed %></h3>
+                        <p>Age: <%= pet.age %> years</p>
+                        <p>Gender: <%= pet.gender %></p>
+                        <p>Compatibility:</p>
+                        <ul>
+                            <li>Other Dogs: <%= pet.getsAlongWithOtherDogs ? 'Yes' : 'No' %></li>
+                            <li>Other Cats: <%= pet.getsAlongWithCats ? 'Yes' : 'No' %></li>
+                            <li>Small Children: <%= pet.getsAlongWithChildren ? 'Yes' : 'No' %></li>
+                        </ul>
+                        <p>Description: <%= pet.description %></p>
+                        <p>Contact: <%= pet.ownerFirstName %> <%= pet.ownerLastName %> (<%= pet.ownerEmail %>)</p>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else if (locals.pets && pets.length === 0) { %>
+            <div id="no-results">
+                <p>No pets found matching your search criteria.</p>
+            </div>
+        <% } %>
+    </div>
+
+
 
     <%- include('footer') %>  
     <script src="find.js"></script> 

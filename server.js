@@ -102,7 +102,7 @@ app.get('/find', (req, res) => res.render('find', { title: 'Find a Pet', pets: u
 app.get('/pets', (req, res) => res.render('pets', { title: 'Pets' }));
 app.get('/privacy', (req, res) => res.render('privacy', { title: 'Privacy' }));
 
-// Account routes
+// Register routes
 app.get('/register', (req, res) => res.render('register', { title: 'Create Account' }));
 
 app.post('/register', (req, res) => {
@@ -141,7 +141,7 @@ app.post('/login', (req, res) => {
         req.session.username = username;
         return res.json({ 
             success: true,
-            redirect: '/away'  // Tell client to redirect
+            redirect: '/away'  
         });
     } else {
         return res.status(401).json({ 
@@ -150,9 +150,6 @@ app.post('/login', (req, res) => {
         });
     }
 });
-
-
-
 
 // Pet routes
 app.get('/away', (req, res) => {
@@ -193,14 +190,20 @@ app.post('/away', (req, res) => {
     }
 });
 
+
 // Find Pet routes
 app.get('/find', (req, res) => {
     res.render('find', { title: 'Find a Pet', pets: undefined });
 });
 
 app.post('/find', (req, res) => {
-    const results = searchPets(req.body);
-    res.render('find', { title: 'Find a Pet', pets: results });
+    try {
+        const results = searchPets(req.body);
+        res.render('find', { title: 'Find a Pet', pets: results });
+    } catch (error) {
+        console.error('Error searching pets:', error);
+        res.status(500).send('Error searching for pets');
+    }
 });
 
 // Logout
