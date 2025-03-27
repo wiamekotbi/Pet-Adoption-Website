@@ -1,4 +1,3 @@
-
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -180,7 +179,7 @@ app.post('/away', (req, res) => {
 
         try {
             fs.appendFileSync(petsFilePath, petRecord, 'utf8');
-            res.status(200).send('Pet registered successfully.');
+            res.status(200).send('Pet registered successfully !');
         } catch (error) {
             console.error('Error writing to pets file:', error);
             res.status(500).send('Error registering pet.');
