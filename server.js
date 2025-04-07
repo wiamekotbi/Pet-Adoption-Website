@@ -205,10 +205,16 @@ app.post('/find', (req, res) => {
     }
 });
 
-// Logout
+//Log out
 app.get('/logout', (req, res) => {
-    req.session.destroy();
-    res.redirect('/');
+    req.session.destroy(err => {
+        if (err) {
+            res.send("Error logging out");
+            return;
+        }
+        // Combine title and message into one object
+        res.render('logout', { title: 'Logout', message: "You have been successfully logged out." });
+    });
 });
 
 // Start server

@@ -22,7 +22,6 @@
         <ul>
             <li><a href="/register" class="menu-item">Create an account</a></li>
             <li><a href="/" class="menu-item">Home page</a></li>
-            <li><a href="/pets" class="menu-item">Browse Available Pets</a></li>
             <li><a href="/find" class="menu-item">Find a dog/cat</a></li>
             <li><a href="/dogcare" class="menu-item">Dog Care</a></li>
             <li><a href="/catcare" class="menu-item">Cat Care</a></li>
@@ -44,6 +43,7 @@
                 <strong>Breed of Dog or Cat</strong>
                 <select name="breed" id="breed" size="1">
                     <option value="" disabled selected>Select a breed</option>
+                    <option value="MixedBreed">Mixed Breed</option>
                     <option value="Bulldog">Bulldog</option>
                     <option value="Beagle">Beagle</option>
                     <option value="Poodle">Poodle</option>
@@ -108,7 +108,7 @@
             </div>
         <% } else if (locals.pets && pets.length === 0) { %>
             <div id="no-results">
-                <p>No pets found matching your search criteria.</p>
+               <br> <p id="nopet">No pets found matching your search criteria.</p>
             </div>
         <% } %>
     </div>

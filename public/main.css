@@ -118,6 +118,10 @@ footer {
   position: absolute;
   bottom: 0;
 }
+.logout{
+  font-family: 'Nunito Sans', sans-serif;
+  margin-left:230px;
+}
 
 
 @media (max-width: 1024px) {

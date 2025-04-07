@@ -149,6 +149,9 @@ select {
   font-family: Nunito Sans, sans-serif;
   padding-left: 5px;
 }
+#nopet{
+  margin-left: 120px;
+}
 
 @media (max-width: 820px) {
   #mainarea {
